@@ -52,7 +52,10 @@ def main() -> None:
 
     for key in inventory:
         value = inventory[key]
-        percentage = (value / quantity_total) * 100
+        if quantity_total != 0:
+            percentage = (value / quantity_total) * 100
+        else:
+            percentage = 0
         print(f"Item {key} represents {round(percentage, 1)}%")
 
     inventory_statistics(inventory)
