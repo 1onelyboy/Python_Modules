@@ -3,7 +3,7 @@ import os
 import site
 
 
-def is_virtual_environment():
+def is_virtual_environment() -> bool:
     return sys.prefix != sys.base_prefix
 
 
@@ -12,6 +12,7 @@ def main() -> None:
     venv_name = os.path.basename(sys.prefix)
     environment_path = sys.prefix
     package_path = site.getsitepackages()[0]
+
     if is_virtual_environment():
         print(f"""MATRIX STATUS: Welcome to the construct
 
@@ -24,9 +25,7 @@ Safe to install packages without affecting
 the global system.
 
 Package installation path:
-{package_path}
-{sys.prefix}
-{sys.base_prefix}""")
+{package_path}""")
     else:
         print(f"""MATRIX STATUS: You're still plugged in
 
@@ -43,6 +42,6 @@ matrix_env\\Scripts\activate # On Windows
 
 Then run this program again.""")
 
-if __name__=="__main__":
-    main()
 
+if __name__ == "__main__":
+    main()
